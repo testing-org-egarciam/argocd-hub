@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: laura-app-prod
+  namespace: argocd
+spec:
+  project: laura-project
+  source:
+    repoURL: https://github.com/testing-org-egarciam/nginx-app.git
+    targetRevision: HEAD
+    path: charts/laura-app
+    helm:
+      valueFiles:
+      - https://github.com/testing-org-egarciam/gitops-config.git/values/prod.yaml
+  destination:
+    server: https://kubernetes.default.svc # This is a placeholder, we will use the secret name
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: laura-project
+spec:
+  description: "Project for laura-app"
+  sourceRepos:
+  - "https://github.com/testing-org-egarciam/nginx-app.git"
+  - "https://github.com/testing-org-egarciam/gitops-config.git"
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: *
+  - server: https://kubernetes.default.svc
+    namespace: argocd
