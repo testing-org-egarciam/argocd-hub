@@ -11,9 +11,9 @@ spec:
     path: charts/laura-app
     helm:
       valueFiles:
-      - https://github.com/testing-org-egarciam/gitops-config.git/values/prod.yaml
+      - https://github.com/testing-org-egarciam/gitops-config.git/values/laura-app/prod.yaml
   destination:
-    server: https://kubernetes.default.svc # This is a placeholder, we will use the secret name
+    server: https://kubernetes.default.svc # ArgoCD will resolve this to the prod secret
     namespace: default
   syncPolicy:
     automated:
