@@ -112,3 +112,9 @@ This ensures the cluster state always reflects the Git state.
 
 ---
 *This repository is the "brain" of the operation: it decides what gets deployed, where, and by whom. Keep it under strict change control (e.g., protected branch, PR reviews).*
+## 🛠️ Local Automation (PoC Workaround)
+Due to Kind cluster limitations, use the provided automation script to deploy apps:
+```bash
+./generate-apps.sh laura-app feat/application-sets
+```
+See [WORKAROUNDS.md](WORKAROUNDS.md) for details.
