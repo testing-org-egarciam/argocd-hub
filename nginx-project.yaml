@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: nginx-project
+  namespace: argocd
+spec:
+  description: Project for nginx applications
+  destinations:
+  - namespace: nginx-ns
+    server: https://172.18.0.4:6443
+  - namespace: nginx-ns
+    server: https://172.18.0.3:6443
+  sourceRepos:
+  - https://github.com/testing-org-egarciam/laura-app.git

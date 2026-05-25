@@ -4,7 +4,7 @@ metadata:
   name: nginx-stg
   namespace: argocd
 spec:
-  project: laura-project
+  project: nginx-project
   source:
     repoURL: 'https://github.com/testing-org-egarciam/laura-app.git'
     targetRevision: HEAD
