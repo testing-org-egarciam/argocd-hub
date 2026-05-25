@@ -4,17 +4,20 @@ metadata:
   name: laura-app-stg
   namespace: argocd
 spec:
+  destination:
+    namespace: default
+    server: https://172.18.0.3:6443
   project: laura-project
-  source:
+  sources:
+  - helm:
+      valueFiles:
+      - $values/values/laura-app/stg.yaml
+    path: charts/laura-app
     repoURL: https://github.com/testing-org-egarciam/laura-app.git
     targetRevision: HEAD
-    path: charts/laura-app
-    helm:
-      valueFiles:
-      - https://raw.githubusercontent.com/testing-org-egarciam/gitops-config/main/values/laura-app/stg.yaml
-  destination:
-    server: https://kubernetes.default.svc # ArgoCD will resolve this to the stg secret
-    namespace: default
+  - ref: values
+    repoURL: https://github.com/testing-org-egarciam/gitops-config.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true

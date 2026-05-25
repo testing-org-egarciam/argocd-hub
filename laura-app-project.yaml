@@ -4,10 +4,14 @@ metadata:
   name: laura-project
   namespace: argocd
 spec:
-  description: "Project for laura-app"
-  sourceRepos:
-  - "https://github.com/testing-org-egarciam/laura-app.git"
-  - "https://github.com/testing-org-egarciam/gitops-config.git"
+  description: Project for laura-app
   destinations:
-  - server: https://kubernetes.default.svc
-    namespace: default
+  - namespace: default
+    server: https://172.18.0.4:6443
+  - namespace: default
+    server: https://172.18.0.3:6443
+  - namespace: default
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/testing-org-egarciam/laura-app.git
+  - https://github.com/testing-org-egarciam/gitops-config.git

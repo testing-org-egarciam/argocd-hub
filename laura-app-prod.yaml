@@ -4,17 +4,20 @@ metadata:
   name: laura-app-prod
   namespace: argocd
 spec:
-  project: laura-project
-  source:
-    repoURL: https://github.com/testing-org-egarciam/laura-app.git
-    targetRevision: HEAD
-    path: charts/laura-app
-    helm:
-      valueFiles:
-      - https://raw.githubusercontent.com/testing-org-egarciam/gitops-config/main/values/laura-app/prod.yaml
   destination:
-    server: https://kubernetes.default.svc # ArgoCD will resolve this to the prod secret
     namespace: default
+    server: https://172.18.0.4:6443
+  project: laura-project
+  sources:
+  - helm:
+      valueFiles:
+      - $values/values/laura-app/prod.yaml
+    path: charts/laura-app
+    repoURL: https://github.com/testing-org-egarciam/laura-app.git
+    targetRevision: main
+  - ref: values
+    repoURL: https://github.com/testing-org-egarciam/gitops-config.git
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true
