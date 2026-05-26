@@ -11,4 +11,4 @@ spec:
   - namespace: nginx-ns
     server: https://172.18.0.3:6443
   sourceRepos:
-  - https://github.com/testing-org-egarciam/laura-app.git
+  - https://github.com/testing-org-egarciam/nginx-app.git

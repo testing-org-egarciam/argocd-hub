@@ -19,9 +19,9 @@ spec:
     spec:
       project: nginx-project
       source:
-        repoURL: 'https://github.com/testing-org-egarciam/laura-app.git'
+        repoURL: 'https://github.com/testing-org-egarciam/nginx-app.git'
         targetRevision: HEAD
-        path: apps/nginx
+        path: manifests
       destination:
         server: '{{.server}}'
         namespace: nginx-ns
