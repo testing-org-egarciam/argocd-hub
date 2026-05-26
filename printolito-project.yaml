@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: printolito-project
+  namespace: argocd
+spec:
+  description: Project for Printolito Application
+  sourceRepos:
+  - 'https://github.com/testing-org-egarciam/printolito.git'
+  - 'https://github.com/testing-org-egarciam/gitops-config.git'
+  destinations:
+  - namespace: printolito-ns
+    server: https://172.18.0.5:6443
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
