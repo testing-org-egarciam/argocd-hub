@@ -10,9 +10,9 @@ spec:
   - list:
       elements:
       - cluster: prod
-        server: https://172.18.0.3:6443
-      - cluster: stg
         server: https://172.18.0.2:6443
+      - cluster: stg
+        server: https://172.18.0.4:6443
   template:
     metadata:
       name: 'laura-app-{{.cluster}}'
