@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: printolito-appset
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - env: prod
+        server: https://172.18.0.5:6443
+  template:
+    metadata:
+      name: 'printolito-{{env}}'
+    spec:
+      project: printolito-project
+      sources:
+      - repoURL: 'https://github.com/testing-org-egarciam/printolito.git'
+        targetRevision: HEAD
+        path: charts/printolito
+        helm:
+          valueFiles:
+          - $values/values/printolito/{{env}}.yaml
+      - repoURL: 'https://github.com/testing-org-egarciam/gitops-config.git'
+        targetRevision: HEAD
+        ref: values
+      destination:
+        server: '{{server}}'
+        namespace: printolito-ns
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
