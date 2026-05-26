@@ -7,9 +7,9 @@ spec:
   description: Project for laura-app
   destinations:
   - namespace: default
-    server: https://172.18.0.3:6443
-  - namespace: default
     server: https://172.18.0.2:6443
+  - namespace: default
+    server: https://172.18.0.4:6443
   - namespace: default
     server: https://kubernetes.default.svc
   sourceRepos:
