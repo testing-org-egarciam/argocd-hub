@@ -6,9 +6,9 @@ metadata:
 spec:
   description: Project for nginx applications
   destinations:
-  - namespace: nginx-ns
+  - namespace: nginx-app
     server: https://172.18.0.2:6443
-  - namespace: nginx-ns
+  - namespace: nginx-app
     server: https://172.18.0.4:6443
   sourceRepos:
   - https://github.com/testing-org-egarciam/nginx-app.git

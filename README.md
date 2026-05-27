@@ -6,7 +6,7 @@ This repository serves as the **"How"** in the GitOps model: it defines the **go
 
 In the **Hub-and-Spoke Architecture**:
 - **Hub Cluster**: Runs the ArgoCD control plane (`argocd-hub`).
-- **Spoke Clusters**: Target Kubernetes clusters where workloads are deployed (`laura-app-prod`, `laura-app-stg`, `printolito-prod`).
+- **Spoke Clusters**: Target Kubernetes clusters where workloads are deployed (`laura-app-prod`, `laura-app-stg`, `printolito-app-prod`).
 - **Git Repos**: 
   - **Application Source Repos** (`laura-app`, `printolito`): Contains the *what* — source code and base Helm charts.
   - **Environment Config Repo** (`gitops-config`): Contains the *where* — environment-specific values.
@@ -33,8 +33,18 @@ In the **Hub-and-Spoke Architecture**:
 
 - **AppProjects** restrict:
   - **Source Repos**: Only approved repositories are allowed for specific apps.
-  - **Destinations**: Deployments are limited strictly to the designated spoke clusters and namespaces.
+  - **Destinations**: Deployments are limited strictly to the designated spoke clusters and app-owned namespaces.
 - This prevents a misconfigured application from pulling charts from unapproved repositories or deploying to clusters outside its scope.
+
+## Namespace Convention
+
+Workloads are deployed to a namespace named after the application repository by default:
+
+- `laura-app` deploys to `laura-app`.
+- `nginx-app` deploys to `nginx-app`.
+- `printolito` deploys to `printolito-app`.
+
+Do not deploy applications to `default` unless the exception is explicitly documented in the ApplicationSet and AppProject.
 
 ## 🚀 How to Add a New Application
 
