@@ -6,7 +6,7 @@ This repository serves as the **"How"** in the GitOps model: it defines the **go
 
 In the **Hub-and-Spoke Architecture**:
 - **Hub Cluster**: Runs the ArgoCD control plane (`argocd-hub`).
-- **Spoke Clusters**: Target Kubernetes clusters where workloads are deployed (`laura-app-prod`, `laura-app-stg`, `printolito-prod`).
+- **Spoke Clusters**: Target Kubernetes clusters where workloads are deployed (`laura-app-prod`, `laura-app-stg`, `printolito-app-prod`).
 - **Git Repos**: 
   - **Application Source Repos** (`laura-app`, `printolito`): Contains the *what* — source code and base Helm charts.
   - **Environment Config Repo** (`gitops-config`): Contains the *where* — environment-specific values.
