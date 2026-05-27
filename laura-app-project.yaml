@@ -6,12 +6,10 @@ metadata:
 spec:
   description: Project for laura-app
   destinations:
-  - namespace: default
+  - namespace: laura-app
     server: https://172.18.0.2:6443
-  - namespace: default
+  - namespace: laura-app
     server: https://172.18.0.4:6443
-  - namespace: default
-    server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/testing-org-egarciam/laura-app.git
   - https://github.com/testing-org-egarciam/gitops-config.git

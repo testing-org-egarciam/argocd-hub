@@ -24,7 +24,7 @@ spec:
         path: manifests
       destination:
         server: '{{.server}}'
-        namespace: nginx-ns
+        namespace: nginx-app
       syncPolicy:
         automated:
           prune: true

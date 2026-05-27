@@ -9,7 +9,7 @@ spec:
   - 'https://github.com/testing-org-egarciam/printolito.git'
   - 'https://github.com/testing-org-egarciam/gitops-config.git'
   destinations:
-  - namespace: printolito-ns
+  - namespace: printolito-app
     server: https://172.18.0.5:6443
   clusterResourceWhitelist:
   - group: '*'
